@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tech With Purpose | Advocacy for Positive Digital Transformation</title>
+  <meta name="description" content="A digital advocacy promoting ethical, inclusive, and sustainable technology for global progress.">
+  <meta name="keywords" content="tech advocacy, positive digital transformation, ethical AI, sustainability, digital inclusion">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f5f6f7;
+      --primary:#007bff;
+      --accent:#00c853;
+      --muted:#9aa4b2;
+      --text:#222;
+      --card:#ffffff;
+      --radius:12px;
+      --glass: rgba(255,255,255,0.7);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,#fbfdff 0%,var(--bg) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    /* container */
+    .wrap{max-width:1100px;margin:0 auto;padding:24px;}
+
+    /* header */
+    header{
+      position:sticky;top:0;z-index:60;
+      backdrop-filter:saturate(120%) blur(6px);
+      background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.55));
+      border-bottom :1px solid rgba(15,23,42,0.04);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1100px;margin:0 auto;padding:12px 20px;}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--primary);}
+    .logo{
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),#3aa0ff);
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:0 6px 18px rgba(3,78,162,0.12);
+    }
+    nav ul{display:flex;gap:12px;margin:0;padding:0;list-style:none;align-items:center}
+    nav a{color:var(--text);text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:500}
+    nav a:hover{background:rgba(0,123,255,0.06);color:var(--primary)}
+    .cta{background:linear-gradient(90deg,var(--primary),#2ea1ff);color:#fff;padding:10px 14px;border-radius:10px;font-weight:600}
+    .menu-toggle{display:none;background:none;border:0;padding:8px;border-radius:8px}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;padding:48px 0}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+      border-radius:var(--radius);padding:28px;box-shadow:0 8px 30px rgba(16,24,40,0.06)
+    }
+    .title{font-size:34px;margin:0 0 8px 0;color:#0b2a4a;font-weight:700}
+    .subtitle{color:var(--muted);margin:0 0 20px 0}
+    .hero-buttons{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    .btn-outline{background:transparent;border:1px solid rgba(3,78,162,0.08);color:var(--primary)}
+    .btn-primary{background:linear-gradient(90deg,var(--primary),#2ea1ff);color:#fff}
+    .hero-visual{
+      height:300px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(circle at 10% 10%, rgba(0,123,255,0.12), transparent 10%),
+                 linear-gradient(180deg,#e9f3ff 0%, #f5fbff 100%);
+      border:1px solid rgba(3,78,162,0.03);
+      position:relative;overflow:hidden;
+    }
+    .floating-nodes{position:absolute;inset:0;pointer-events:none}
+    .node{position:absolute;border-radius:50%;opacity:0.9;mix-blend-mode:screen}
+
+    /* features */
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+    .fcard{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(6,12,34,0.04);display:flex;gap:12px;align-items:flex-start}
+    .ficon{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#e6f6ff,#e9fff3);font-weight:700}
+    .ftext{font-size:14px;font-weight:600;margin:0}
+    .fsub{font-size:13px;color:var(--muted);margin-top:6px}
+
+    /* sections */
+    section{padding:42px 0}
+    h2{margin:0 0 12px 0;font-size:20px;color:#0b2a4a}
+    p.lead{color:var(--muted);margin:0 0 18px 0;line-height:1.55}
+
+    /* projects */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(12,20,40,0.02);transition:transform .28s,box-shadow .28s}
+    .project:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(12,20,40,0.08)}
+    .pcat{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:8px}
+    .ptitle{font-weight:700;margin:0 0 8px 0}
+    .pdesc{color:var(--muted);font-size:14px;margin:0}
+
+    /* impact */
+    .stats{display:flex;gap:18px;flex-wrap:wrap}
+    .stat{background:linear-gradient(180deg,#fff,rgba(255,255,255,0.96));padding:18px;border-radius:12px;flex:1;min-width:180px;box-shadow:0 8px 28px rgba(14,22,44,0.04);text-align:center}
+    .stat .num{font-size:20px;font-weight:700;color:var(--primary)}
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .test{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 8px 24px rgba(10,20,40,0.03)}
+
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    form{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(10,20,40,0.04)}
+    label{display:block;font-size:13px;margin-bottom:8px;color:#223}
+    input[type=text],input[type=email],textarea{
+      width:100%;padding:12px;border-radius:10px;border:1px solid rgba(10,20,40,0.06);font-size:14px;margin-bottom:12px;background:transparent
+    }
+    button[type=submit]{background:linear-gradient(90deg,var(--primary),#2ea1ff);color:#fff;padding:12px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+
+    /* footer */
+    footer{padding:20px 0;color:var(--muted);font-size:13px;text-align:center}
+
+    /* scroll top */
+    .top-btn{position:fixed;right:18px;bottom:20px;background:var(--primary);color:#fff;border:0;border-radius:10px;padding:10px 12px;display:none;cursor:pointer;z-index:80;box-shadow:0 12px 30px rgba(0,123,255,0.18)}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .testimonials{grid-template-columns:repeat(2,1fr)}
+      nav ul{display:none}
+      .menu-toggle{display:inline-flex}
+    }
+    @media (max-width:620px){
+      .features{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .wrap{padding:16px}
+      .title{font-size:28px}
+    }
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,0.04);font-weight:600;color:#0b2a4a;font-size:13px}
+    .tag{font-size:12px;color:var(--muted);padding:6px 8px;border-radius:8px;border:1px solid rgba(12,20,40,0.03)}
+    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav" role="navigation" aria-label="Main">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="true">T</div>
+      <div>
+        <div style="font-weight:700">Tech With Purpose</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Advocacy for Positive Digital Transformation</div>
+      </div>
+    </div>
+
+    <nav>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menu">☰</button>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div style="display:flex;gap:10px;align-items:center">
+      <a class="pill" href="#projects">Our Work</a>
+      <a class="cta" href="#contact">Join</a>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+  <div class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-card">
+        <h1 id="hero-title" class="title">Tech With Purpose</h1>
+        <p class="subtitle">Advocacy for Positive Digital Transformation</p>
+        <p class="lead">Technology is powerful when used for good. Our advocacy promotes digital innovation that uplifts people, strengthens communities, and protects the planet.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</button>
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Join the Movement</button>
+        </div>
+
+        <div style="margin-top:20px;">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div class="tag">Digital Inclusion</div>
+            <div class="tag">Sustainable Innovation</div>
+            <div class="tag">Education Access</div>
+            <div class="tag">Ethical AI</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg width="220" height="220" viewBox="0 0 220 220" style="z-index:2">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00c853"/><stop offset="1" stop-color="#007bff"/></linearGradient>
+          </defs>
+          <rect x="10" y="10" width="200" height="120" rx="12" fill="url(#g1)" opacity="0.12"></rect>
+          <circle cx="60" cy="140" r="36" fill="#fff" opacity="0.06"></circle>
+          <g transform="translate(40,30)" fill="#0b2a4a">
+            <rect x="0" y="0" width="60" height="8" rx="3"></rect>
+            <rect x="0" y="20" width="110" height="8" rx="3" opacity="0.7"></rect>
+            <rect x="0" y="40" width="80" height="8" rx="3" opacity="0.5"></rect>
+          </g>
+        </svg>
+
+        <div class="floating-nodes" aria-hidden="true">
+          <div class="node" style="width:120px;height:120px;left:-20px;top:20px;background:linear-gradient(90deg,rgba(0,123,255,0.08),rgba(0,200,83,0.06));filter:blur(16px)"></div>
+          <div class="node" style="width:60px;height:60px;right:40px;bottom:40px;background:linear-gradient(90deg,rgba(3,78,162,0.08),rgba(0,200,83,0.06));filter:blur(8px)"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <section aria-labelledby="features-title">
+      <h2 id="features-title">Focus Areas</h2>
+      <p class="lead">Four priorities guide our work—education, healthcare, environment, and community.</p>
+
+      <div class="features" role="list">
+        <div class="fcard" role="listitem">
+          <div class="ficon" aria-hidden="true">📚</div>
+          <div>
+            <div class="ftext">Education Access</div>
+            <div class="fsub">Expand digital learning and literacy for every student.</div>
+          </div>
+        </div>
+
+        <div class="fcard" role="listitem">
+          <div class="ficon" aria-hidden="true">❤️</div>
+          <div>
+            <div class="ftext">Healthcare</div>
+            <div class="fsub">Support telehealth and AI tools that reach remote patients.</div>
+          </div>
+        </div>
+
+        <div class="fcard" role="listitem">
+          <div class="ficon" aria-hidden="true">🌱</div>
+          <div>
+            <div class="ftext">Sustainable Innovation</div>
+            <div class="fsub">Use green tech for energy efficiency and climate monitoring.</div>
+          </div>
+        </div>
+
+        <div class="fcard" role="listitem">
+          <div class="ficon" aria-hidden="true">🤝</div>
+          <div>
+            <div class="ftext">Community</div>
+            <div class="fsub">Build safe, inclusive online spaces that empower people.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p class="lead">Positive Digital Transformation means using technology not only for profit but for human progress, social equity, and environmental balance. We focus on projects that improve lives and protect the future.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;margin-top:18px">
+        <div>
+          <h3 style="margin:0 0 8px 0">Core Focus Areas</h3>
+          <ul style="margin:12px 0 0 18px;color:var(--muted)">
+            <li><strong>Education</strong> — Accessible e-learning and digital literacy programs.</li>
+            <li><strong>Healthcare</strong> — Telemedicine and data-driven health access.</li>
+            <li><strong>Environment</strong> — IoT and smart systems for sustainability.</li>
+            <li><strong>Community</strong> — Tools for safer, inclusive online communities.</li>
+          </ul>
+
+          <h3 style="margin-top:18px">Mission</h3>
+          <p style="color:var(--muted);margin-top:8px">Our mission is to lead and inspire a movement that values people over profit and purpose over power. We empower students, creators, and communities to build tech with ethics and empathy.</p>
+        </div>
+
+        <div style="background:linear-gradient(180deg,#fff,rgba(255,255,255,0.96));padding:18px;border-radius:12px;box-shadow:0 8px 28px rgba(12,20,40,0.04)">
+          <div style="font-weight:700;margin-bottom:8px">Quick Facts</div>
+          <div style="color:var(--muted);font-size:14px">We partner with NGOs, schools, and local governments to pilot scalable solutions. We document results and open-source key tools.</div>
+          <div style="display:flex;gap:8px;margin-top:14px">
+            <div class="pill">Open Initiatives</div>
+            <div class="pill">Volunteer Opportunities</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects and Initiatives</h2>
+      <p class="lead">Real and conceptual projects that prove technology with purpose drives change.</p>
+
+      <div class="grid" style="margin-top:18px">
+        <div class="project" tabindex="0">
+          <div class="pcat">Environment</div>
+          <h3 class="ptitle">EcoSmart Network</h3>
+          <p class="pdesc">IoT-powered system tracking pollution and enabling smart energy use in cities.</p>
+        </div>
+
+        <div class="project" tabindex="0">
+          <div class="pcat">Education</div>
+          <h3 class="ptitle">EduLink</h3>
+          <p class="pdesc">Free digital learning tools and offline content kits for remote schools.</p>
+        </div>
+
+        <div class="project" tabindex="0">
+          <div class="pcat">Healthcare</div>
+          <h3 class="ptitle">HealthBridge</h3>
+          <p class="pdesc">AI-assisted platform connecting doctors and patients in rural regions.</p>
+        </div>
+
+        <div class="project" tabindex="0">
+          <div class="pcat">Community</div>
+          <h3 class="ptitle">Code4Change</h3>
+          <p class="pdesc">Youth workshops teaching ethical coding and civic tech skills.</p>
+        </div>
+
+        <div class="project" tabindex="0">
+          <div class="pcat">Sustainability</div>
+          <h3 class="ptitle">GreenCity DataHub</h3>
+          <p class="pdesc">Urban data network for waste, water, and air quality monitoring.</p>
+        </div>
+
+        <div class="project" tabindex="0">
+          <div class="pcat">AI</div>
+          <h3 class="ptitle">AI for Humanity</h3>
+          <p class="pdesc">Open models and curricula for safe AI use in education and social services.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" aria-labelledby="impact-title">
+      <h2 id="impact-title">Impact</h2>
+      <p class="lead">Measurable results from focused, ethical projects.</p>
+
+      <div class="stats" style="margin-top:18px">
+        <div class="stat">
+          <div class="num" data-target="10000">0</div>
+          <div class="muted">Students reached through e-learning</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-target="30">0</div>
+          <div class="muted">Sustainable projects launched</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-target="15">0</div>
+          <div class="muted">Tech partners supporting ethical innovation</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-target="100">0</div>
+          <div class="muted">Commitment to responsible digital growth — %</div>
+        </div>
+      </div>
+
+      <div class="testimonials" style="margin-top:18px">
+        <div class="test">
+          <div style="font-weight:700">Tech Advocate</div>
+          <div style="color:var(--muted);margin-top:8px">"Technology becomes powerful when used responsibly."</div>
+        </div>
+        <div class="test">
+          <div style="font-weight:700">Student Beneficiary</div>
+          <div style="color:var(--muted);margin-top:8px">"Innovation with empathy changed my path to education."</div>
+        </div>
+        <div class="test">
+          <div style="font-weight:700">Educator Partner</div>
+          <div style="color:var(--muted);margin-top:8px">"Digital inclusion opened new doors for our community."</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Join the Advocacy</h2>
+      <p class="lead">Be part of a movement that uses technology for good. Volunteer, partner, or collaborate.</p>
+
+      <div class="contact-grid" style="margin-top:18px">
+        <form id="contactForm" novalidate>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your full name" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="name@example.com" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="How would you like to help?" required></textarea>
+
+          <button type="submit">Send Message</button>
+          <div id="formMsg" role="status" aria-live="polite" style="margin-top:12px;color:var(--muted)"></div>
+        </form>
+
+        <aside style="padding:18px;background:linear-gradient(180deg,#fff,rgba(255,255,255,0.98));border-radius:12px;box-shadow:0 8px 24px rgba(10,20,40,0.04)">
+          <div style="font-weight:700">Contact Info</div>
+          <div style="color:var(--muted);margin-top:8px">Email: <a href="mailto:info@techwithpurpose.org">info@techwithpurpose.org</a></div>
+          <div style="color:var(--muted);margin-top:8px">Facebook: TechWithPurposePH</div>
+          <div style="color:var(--muted);margin-top:8px">Instagram: @techwithpurpose</div>
+          <div style="color:var(--muted);margin-top:8px">LinkedIn: Tech With Purpose Advocacy</div>
+
+          <div style="margin-top:18px">
+            <div class="pill">Volunteer</div>
+            <div class="pill" style="margin-left:8px">Partner</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">Tech With Purpose © 2025 — Empowering digital transformation for good.</div>
+    </footer>
+  </div>
+</main>
+
+<button id="topBtn" class="top-btn" aria-label="Scroll to top">↑</button>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('menu');
+  menuToggle?.addEventListener('click', ()=>{
+    const open = menu.style.display === 'flex';
+    menu.style.display = open ? 'none' : 'flex';
+    menuToggle.setAttribute('aria-expanded', String(!open));
+  });
+
+  // Smooth anchor links
+  document.querySelectorAll('a[href^="#"], button[data-scroll]').forEach(el=>{
+    el.addEventListener('click', e=>{
+      const target = el.getAttribute('href') || el.dataset.target;
+      if(!target || target === '#') return;
+      const node = document.querySelector(target);
+      if(node){ e.preventDefault(); node.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+
+  // Scroll to top button
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 420) topBtn.style.display = 'inline-block'; else topBtn.style.display = 'none';
+  });
+  topBtn.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Animated counters
+  const counters = document.querySelectorAll('.num');
+  let countersSeen = false;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !countersSeen){
+        countersSeen = true;
+        counters.forEach(el=>{
+          const target = +el.dataset.target;
+          const duration = 1400;
+          const step = Math.max(1, Math.floor(target / (duration / 16)));
+          let val = 0;
+          const t = setInterval(()=>{
+            val += step;
+            if(val >= target){ val = target; clearInterval(t); }
+            el.textContent = val.toLocaleString();
+          },16);
+        });
+      }
+    });
+  }, {threshold:0.6});
+  counters.forEach(c=>obs.observe(c));
+
+  // Simple reveal on scroll
+  const scrollObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.style.transform = 'translateY(0)', e.target.style.opacity = 1;
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('section, .project, .fcard, .stat, .test, form').forEach(el=>{
+    el.style.transform = 'translateY(18px)';
+    el.style.opacity = 0;
+    el.style.transition = 'all .6s cubic-bezier(.2,.9,.2,1)';
+    scrollObserver.observe(el);
+  });
+
+  // Contact form handling — client side only
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    if(!name || !email || !message){
+      formMsg.textContent = 'Please complete all fields.';
+      return;
+    }
+    // Simulate send — replace with API call or server endpoint
+    formMsg.textContent = 'Sending message...';
+    setTimeout(()=>{
+      formMsg.textContent = 'Thanks—your message has been received. We will contact you via email.';
+      form.reset();
+    },900);
+  });
+
+  // Keyboard accessibility — allow enter to toggle menu on mobile toggle
+  menuToggle?.addEventListener('keyup', (e)=>{ if(e.key === 'Enter') menuToggle.click(); });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('#menu a').forEach(a=>{
+    a.addEventListener('click', ()=>{ if(window.innerWidth < 980){ menu.style.display = 'none'; menuToggle.setAttribute('aria-expanded','false'); } });
+  });
+</script>
+</body>
+</html>
